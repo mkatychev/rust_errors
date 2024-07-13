@@ -1,0 +1,2 @@
+`marp -w slides.md`
+

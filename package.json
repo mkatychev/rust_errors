@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "inputDir": "./slides",
+    "output": "./public"
+  }
+}
