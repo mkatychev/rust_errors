@@ -24,22 +24,26 @@ Seeing is Observing
 
 ---
 
-# What _isn't_ an error? A successfully terminated process!
+## What _isn't_ an error? A successfully terminated process!
 
 <iframe src="https://doc.rust-lang.org/std/process/struct.ExitCode.html#examples" class="h-full"></iframe>
 
+
 ---
 
-# What _isn't_ an error? A panic!
+## Error:
+
+tl;dr: an error in Rust is something emitted by a `Result::Err` enum or the `panic!` macro
+
+
+## `panic!`
 
 ```rust
 panic!("This is not an error!");
 ```
-
----
-
-## ...unless you catch it
-<iframe src="https://doc.rust-lang.org/std/panic/fn.take_hook.html#examples" class="h-full"></iframe>
+ > The Rust language provides two complementary systems for handling errors: `panic!` and `Result`.
+> The `panic!` macro is used to construct errors that represent a bug that has been detected in your program.
+> `Result` is used alongside user defined types which represent the various anticipated runtime failure modes that the associated computation could encounter.
 
 ---
 
@@ -76,7 +80,6 @@ pub enum Result<T, E> {
 }
 ```
 
-* in essence, an _error_ in rust (usually) is something you eventuall expect to return in an `Result::Err`
 * the three following examples will be dealing with the inner `E` of a `Result<T, E>`
 
 ---
@@ -99,7 +102,7 @@ pub trait Error: Debug + Display {
 
 ---
 
-# `dyn Error`
+## `dyn Error`
 
 ```rust
 fn main() -> Result<(), Box<dyn std::error::Error>> {
